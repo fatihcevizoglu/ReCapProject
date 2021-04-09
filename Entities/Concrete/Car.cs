@@ -1,6 +1,7 @@
 ﻿using Entities.Abstract;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities.Concrete
@@ -8,6 +9,8 @@ namespace Entities.Concrete
    public class Car : IEntity
     {
         //Id, BrandId, ColorId, ModelYear, DailyPrice, Description
+       
+        [Key] 
         public int CarId { get; set; }
 
         public int BrandId { get; set; }
@@ -16,7 +19,7 @@ namespace Entities.Concrete
 
         public string ModelYear { get; set; }
 
-        public double DailyPrice { get; set; }
+        public decimal DailyPrice { get; set; }
 
         public string Description { get; set; }
     }

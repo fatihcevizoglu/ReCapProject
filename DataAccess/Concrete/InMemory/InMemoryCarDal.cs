@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Entities.Concrete;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -16,11 +17,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _car = new List<Car>
             {
-                new Car{CarId = 1 ,BrandId = 1 , ColorId = 5 ,DailyPrice = 500.99, Description = "Suv" ,ModelYear = "2016" },
-                new Car{CarId = 2 ,BrandId = 1 , ColorId = 3 ,DailyPrice = 600.99, Description = "Sedan" ,ModelYear = "2019" },
-                new Car{CarId = 3 ,BrandId = 1 , ColorId = 9 ,DailyPrice = 1100.99, Description = "Sport" ,ModelYear = "2021" },
-                new Car{CarId = 4 ,BrandId = 1 , ColorId = 7 ,DailyPrice = 900.99, Description = "Jip" ,ModelYear = "2013" },
-                new Car{CarId = 3 ,BrandId = 1 , ColorId = 6 ,DailyPrice = 1000.99, Description = "classic" ,ModelYear = "1965" },
+                new Car{CarId = 1 ,BrandId = 1 , ColorId = 5 ,DailyPrice = 50099, Description = "Suv" ,ModelYear = "2016" },
+                new Car{CarId = 2 ,BrandId = 1 , ColorId = 3 ,DailyPrice = 60099, Description = "Sedan" ,ModelYear = "2019" },
+                new Car{CarId = 3 ,BrandId = 1 , ColorId = 9 ,DailyPrice = 110099, Description = "Sport" ,ModelYear = "2021" },
+                new Car{CarId = 4 ,BrandId = 1 , ColorId = 7 ,DailyPrice = 90099, Description = "Jip" ,ModelYear = "2013" },
+                new Car{CarId = 3 ,BrandId = 1 , ColorId = 6 ,DailyPrice = 100099, Description = "classic" ,ModelYear = "1965" },
             };
 
         }
@@ -37,9 +38,19 @@ namespace DataAccess.Concrete.InMemory
             _car.Remove(carToDelete);
         }
 
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
             return _car;
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetByBrand(int brandId)
