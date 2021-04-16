@@ -19,5 +19,7 @@ namespace Business.Constants
 
         public static string CarListed = "Ürün Listelendi";
 
+        public static string CarNotDelivered = "Araç Teslim Edilmedi";
+
     }
 }
