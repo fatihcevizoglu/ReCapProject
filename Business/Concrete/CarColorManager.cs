@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class CarColorManager : ICarColorService
+   public class CarColorManager : ICarColorService
 
     {
         ICarColorDal _carcolorDal;
