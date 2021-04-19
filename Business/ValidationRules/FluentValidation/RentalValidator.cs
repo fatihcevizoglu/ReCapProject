@@ -19,14 +19,7 @@ namespace Business.ValidationRules.FluentValidation
 
            
 
-            var rest = _rentalDal.GetAll();
-            foreach (var item in rest)
-            {
-                if (item.CarId == rental.CarId && item.ReturnDate == null)
-                {
-                    return new ErrorResult(Messages.CarNotDelivered);
-                }
-            }
+         
         }
 
 
