@@ -20,6 +20,7 @@ namespace Business.Constants
         public static string CarListed = "Ürün Listelendi";
 
         public static string CarNotDelivered = "Araç Teslim Edilmedi";
-
+        public static string ImageLimit = "Görsel Ekleme Limiti Doldu";
+        public static string ImageUpdate = "Görsel Güncellendi";
     }
 }
