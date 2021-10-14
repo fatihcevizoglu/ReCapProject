@@ -2,6 +2,8 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
@@ -25,8 +27,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-       [SecuredOperation("car.add,admin")]
+      // [SecuredOperation("car.add,admin")] //Düzeltilicek Hatalı
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
 
         public IResult Add(Car car)
         {
@@ -34,6 +37,21 @@ namespace Business.Concrete
             _carDal.Add(car);
 
             return new SuccessResult(Messages.CarAdded);
+
+        }
+
+        [TransactionScopeAspect]
+
+        public IResult AddTransactionalTest(Car car)
+        {
+            Add(car);
+            if (car.DailyPrice < 10)
+            {
+                throw new Exception("");
+            }
+            Add(car);
+
+            return null;
 
         }
 
@@ -46,6 +64,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             //if (DateTime.Now.Hour == 22)
